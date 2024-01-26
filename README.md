@@ -1,7 +1,7 @@
 dns64perf++
 ===========
 
-A C++14 DNS64 tester.
+A C++14 DNS64 tester: A fork from Daniel Bakai.
 
 Introduction
 ------------
@@ -15,8 +15,6 @@ Method
 dns64perf++ sends AAAA queries for domain names generated on-the-fly, incrementally from a specific subnet in the form {000..255}-{000..255}-{000..255}-{000..255}.dns64perf.test.
 
 It uses a function execution time-compensated timer on a worker thread to send these requests at a specific frequency.
-
-Below 200 Hz (>5 ms) it uses std::this_thread::sleep_for() for timing, over 200 Hz it uses active sleep (a spinlock) to ensure better timer accuracy.
 
 The requests can be sent in bursts, in which case the specified number of requests are sent at every tick of the timer.
 
@@ -43,7 +41,7 @@ dns64perf++ can be parameterized using command line arguments. All the arguments
 
 If you installed dns64perf++ you can start a measurement using:
 
-	dns64perf++ <server> <port> <subnet> <number of requests> <burst size> <number of threads> <delay between bursts in ns> <timeout in s>
+	dns64perf++ <server> <port> <subnet> <number of requests> <burst size> <number of threads> <ports per thread> <delay between bursts in ns> <timeout in s>
 
 __server__: the IPv6 address of the DUT
 
@@ -56,6 +54,8 @@ __number of requests__: the number of requests to send, must be between 1 and th
 __burst size__: the number of requests to send at every timer tick, must be the divisor of the number of requests
 
 __number of threads__: the number of threads to use
+
+__ports per thread__: the number of the different souce port numbers used by each thread
 
 __delay between bursts in ns__: 1/< timer frequency > in nanoseconds
 
