@@ -26,6 +26,7 @@
 #include <sys/types.h>
 
 #include <syslog.h>
+#include <stdexcept>
 
 DNSLabel::DNSLabel(uint8_t *begin) : begin_{begin} {}
 
