@@ -8,7 +8,6 @@ Introduction
 
 dns64perf++ is a tool for measuring DNS64 server performance.
 
-
 Method
 ------
 
@@ -28,20 +27,26 @@ After the last query has been sent, the main thread waits for 2 more seconds for
 
 Build
 -----
+
 dns64perf++ is written in C++14 and requires >=clang-3.5 or >=gcc-4.8.3 to compile.
 
 To compile and install dns64perf++ issue:
 
-	make
-	sudo make install
+```sh
+make
+sudo make install
+```
 
 Usage
 -----
+
 dns64perf++ can be parameterized using command line arguments. All the arguments are mandatory.
 
 If you installed dns64perf++ you can start a measurement using:
 
-	dns64perf++ <server> <port> <subnet> <number of requests> <burst size> <number of threads> <ports per thread> <delay between bursts in ns> <timeout in s>
+```none
+dns64perf++ <server> <port> <subnet> <number of requests> <burst size> <number of threads> <ports per thread> <delay between bursts in ns> <timeout in s>
+```
 
 __server__: the IPv6 address of the DUT
 

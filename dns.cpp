@@ -26,6 +26,7 @@
 #include <sys/types.h>
 
 #include <syslog.h>
+#include <stdexcept>
 
 DNSLabel::DNSLabel(uint8_t *begin) : begin_{begin} {}
 
@@ -56,7 +57,7 @@ size_t DNSLabel::length() const {
 }
 
 bool operator==(const DNSLabel &lhs, const DNSLabel &rhs) {
-  return lhs.begin_ == lhs.begin_;
+  return lhs.begin_ == rhs.begin_;
 }
 
 DNSQName::DNSQName(uint8_t *begin, size_t maxlen, DNSPacket &packet)
